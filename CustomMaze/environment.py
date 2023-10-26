@@ -45,7 +45,7 @@ class MazeGameEnv(gymnasium.Env):
 
         # Define action and observation space
         self.action_space = spaces.Discrete(4)
-        self.observation_space = spaces.Box(low=-1, high=1, shape=(3, 3, 7), dtype=np.int16)
+        self.observation_space = spaces.MultiBinary(3 * 3 * 7)
 
         # boolean to check if the pygame display is initialized
         self.display_initialized = False  # Set to True once the pygame window is set up
@@ -221,7 +221,7 @@ class MazeGameEnv(gymnasium.Env):
 
         # If the position is outside the maze boundaries, set info to -1
         if pos[0] < 1 or pos[0] > self.num_rows or pos[1] < 1 or pos[1] > self.num_cols:
-            return np.array([-1, -1, -1, -1, -1, -1, 0], dtype=np.int8)
+            return np.array([0,0,0,0,0,0,0], dtype=np.int8)
 
         # Wall information
         if pos in self.maze_map:

@@ -31,9 +31,10 @@ if __name__ == "__main__":
             pygame.event.get()
             action = env.random_valid_action()
             obs, reward, terminated, truncated, info = env.step(action)
+            print(f"obs: {obs}, reward: {reward}, terminated: {terminated}, truncated: {truncated}, info: {info}")
             env.render()
             # print('Reward:', reward)
-            pygame.time.wait(40)
+            pygame.time.wait(400000)
 
             # Added for debugging purposes
             # print("Done status:", done)
